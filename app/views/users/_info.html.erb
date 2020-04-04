@@ -1,0 +1,40 @@
+<div class="side_bar">
+  <div class="user_info">
+    <h1>User info</h1>
+    <div class="user_profile_image">
+      <%= attachment_image_tag user, :profile_image, format: 'jpeg', size: "60x60" , fallback: "no_image.jpg" %>
+    </div>
+    <div class="user_name-box">
+      <span>name</span>
+      <span class="user_name"><%= user.name %></span>
+    </div>
+    <div class="uesr_introduction-box">
+      <span>introduction</span>
+      <span class="user_introduction"><%= user.introduction %></span>
+    </div>
+    <% if user.id == current_user.id %>
+    <div class="user_edit-button">
+      <%= link_to "edit", edit_user_path(user.id) %>
+    </div>
+    <% end %>
+  </div>
+
+  <div class="new_book">
+    <h1>New book</h1>
+
+    <%= form_for(newbook, url: new_book_path(current_user.id) ) do |f| %>
+    <div class="new_book-title">
+      <%= f.label :title, "title" %>
+      <%= f.text_field :title %>
+    </div>
+    <div class="new_book-opinion">
+      <%= f.label :body, "opinion" %>
+      <%= f.text_field :body %>
+    </div>
+    <div class="new_book-create">
+      <%= f.submit "Create book" %>
+    </div>
+    <% end %>
+
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<% if flash[:notice] %>
+<div class="flash_notice">
+  <%= flash[:notice] %>
+</div>
+<% end %>
+
+<h1>welcome to Bookers</h1>
+<p>
+  In Bookers,<br>
+
+  you can share and exchange your opinions , inpressions , and emotions <br>
+
+  about various books!
+</p>
+<div class="log_in-button">
+  <%= link_to "Log in", new_user_session_path %>
+</div>
+<div class="sign_in-button">
+  <%= link_to "Sign up", new_user_registration_path %>
+</div>
+<%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
