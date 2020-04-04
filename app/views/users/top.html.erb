@@ -1,21 +1,26 @@
-<% if flash[:notice] %>
-<div class="flash_notice">
-  <%= flash[:notice] %>
-</div>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      <% if flash[:notice] %>
+      <div class="flash_notice">
+        <%= flash[:notice] %>
+      </div>
+      <% end %>
 
-<h1>welcome to Bookers</h1>
-<p>
-  In Bookers,<br>
+      <h1>welcome to <span class="glyphicon glyphicon-book" aria-hidden="true"></span><b>Bookers</b>!!</h1>
+      <p>
+        In <span class="glyphicon glyphicon-book" aria-hidden="true"></span><b>Bookers</b>,<br>
 
-  you can share and exchange your opinions , inpressions , and emotions <br>
+        you can share and exchange your opinions , inpressions , and emotions <br>
 
-  about various books!
-</p>
-<div class="log_in-button">
-  <%= link_to "Log in", new_user_session_path %>
+        about various books!
+      </p>
+      <div class="log_in-button">
+        <%= link_to "Log in", new_user_session_path ,class: "btn btn-block btn-primary" %>
+      </div>
+      <div class="sign_in-button">
+        <%= link_to "Sign up", new_user_registration_path , class: "btn btn-block btn-success" %>
+      </div>
+    </div>
+  </div>
 </div>
-<div class="sign_in-button">
-  <%= link_to "Sign up", new_user_registration_path %>
-</div>
-<%= link_to "ログアウト", destroy_user_session_path, method: :delete %>

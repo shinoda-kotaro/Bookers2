@@ -7,19 +7,25 @@
 </ul>
 <% end %>
 
-<h1>User info</h1>
-<%= form_for @user do |f| %>
-<div class="edit_name">
-  <%= f.label :name, "Name" %>
-  <%= f.text_field :name %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+      <h1>User info</h1>
+      <%= form_for @user do |f| %>
+      <div class="form-group">
+        <%= f.label :name, "Name" %>
+        <%= f.text_field :name , class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :profile_image_id, "Image" %>
+        <%= f.attachment_field :profile_image %>
+      </div>
+      <div class="form-group">
+        <%= f.label :introduction, "introduction" %>
+        <%= f.text_area :introduction , class: "form-control" %>
+      </div>
+      <%= f.submit "Update User" , class: "btn btn-block btn-primary" %>
+      <% end %>
+    </div>
+  </div>
 </div>
-<div class="edit_profile_image">
-  <%= f.label :profile_image_id, "Image" %>
-  <%= f.attachment_field :profile_image %>
-</div>
-<div class="edit_introduction">
-  <%= f.label :introduction, "introduction" %>
-  <%= f.text_area :introduction %>
-</div>
-<%= f.submit "Update User" %>
-<% end %>
