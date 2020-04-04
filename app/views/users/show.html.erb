@@ -1,27 +1,33 @@
 <% if flash[:notice] %>
 <div class="flash_notice">
-  <%= flash[:notice] %>
+  <span class="text-success">
+    <%= flash[:notice] %>
+  </span>
 </div>
 <% end %>
 
 <% if flash[:danger] %>
 <div class="flash_danger">
-  <%= flash[:danger] %>
+  <span class="text-warning">
+    <%= flash[:danger] %>
+  </span>
 </div>
 <% end %>
 
 <% if flash[:success] %>
 <div class="flash_success">
-  <%= flash[:success] %>
+  <span class="text-success">
+    <%= flash[:success] %>
+  </span>
 </div>
 <% end %>
 
 <div class="container">
   <div class="row">
-    <div class="col-sm-4">
+    <div class="col-xs-3">
       <%= render partial: 'info', locals: { user: @user, newbook: @newbook } %>
     </div>
-    <div class="main-containts col-sm-8">
+    <div class="main-containts col-xs-9">
       <div class="user_books">
         <h1>books</h1>
 

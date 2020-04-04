@@ -1,20 +1,20 @@
-<% if @book.present? %>
-<% if @book.errors.any? %>
-<h4 class="error_count"><%= @book.errors.count %> errors prohibited this book from being saved:</h4>
-<ul class="error_box">
-  <% @book.errors.full_messages.each do |message| %>
-  <li class="error_message"><%= message %></li>
+<% if session[:error].present? %>
+<h4 class="error_count"><%= session[:error_count] %> errors prohibited this book from being saved:</h4>
+<ul class="errors">
+  <% session[:error].each do |e| %>
+  <li><%= e %></li>
   <% end %>
 </ul>
-<% end %>
+<%= session[:error] = nil %>
+<%= session[:error_count] = nil %>
 <% end %>
 
 <div class="container">
   <div class="row">
-    <div class="col-sm-4">
+    <div class="col-xs-3">
       <%= render partial: 'users/info', locals: { user: @user, newbook: @newbook } %>
     </div>
-    <div class="col-sm-8">
+    <div class="col-xs-9">
       <h1>Books</h1>
       <table class="table table-striped table-hover">
         <tr>

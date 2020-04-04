@@ -1,15 +1,17 @@
 <% if flash[:success] %>
 <div class="flash_success">
-  <%= flash[:success] %>
+  <span class="text-success">
+    <%= flash[:success] %>
+  </span>
 </div>
 <% end %>
 
 <div class="container">
   <div class="row">
-    <div class="col-sm-4">
+    <div class="col-xs-3">
       <%= render partial: 'users/info', locals: { user: @user, newbook: @newbook } %>
     </div>
-    <div class="col-sm-8">
+    <div class="col-xs-9">
       <h1>Book detail</h1>
 
       <table class="table table-striped table-bover">
@@ -23,8 +25,10 @@
           <td><%= link_to @book.title , book_path(@book.id) %></td>
           <td><%= @book.body %></td>
           <% if @book.user_id == current_user.id %>
-          <td><%= link_to "edit" , edit_book_path(@book.id) %></td>
-          <td><%= link_to "destroy" , book_path(@book.id) , method: :delete, data: {confirm: "削除しますか？"} %></td>
+          <td><%= link_to "Edit" , edit_book_path(@book.id) , class: "btn btn-success btn-xs" %></td>
+          <td>
+            <%= link_to "Destroy" , book_path(@book.id) , method: :delete, data: {confirm: "削除しますか？"} , class: "btn btn-danger btn-xs" %>
+          </td>
           <% end %>
         </tr>
       </table>

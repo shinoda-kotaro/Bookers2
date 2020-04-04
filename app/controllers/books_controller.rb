@@ -20,10 +20,9 @@ class BooksController < ApplicationController
       flash[:success] = 'You have creatad book successfully.'
       redirect_to book_path(@book.id)
     else
-      @user = User.find(current_user.id)
-      @newbook = Book.new
-      @books = Book.all
-      render 'index'
+      session[:error] = @book.errors.full_messages
+      session[:error_count] = @book.errors.count
+      redirect_to books_path
     end
   end
 
@@ -31,7 +30,7 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     if @book.user_id != current_user.id
       flash[:danger] = 'You dont have permission'
-      redirect_to user_path(current_user.id)
+      redirect_to books_path
     end
   end
 
